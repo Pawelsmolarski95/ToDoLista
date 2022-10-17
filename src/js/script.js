@@ -4,8 +4,8 @@ const
   searchBTN = document.querySelector('.serachBtn'),
   noTaskDiv = document.querySelector('.noTask'),
   // toDoTask = document.querySelector('.toDoTask'),
-  taskContainer = document.querySelector('.taskContainer');
-  // agree = document.querySelector('.agree'),
+  taskContainer = document.querySelector('.taskContainer'),
+  toDoTaskP = document.querySelector('.toDoTaskP');
   // edit = document.querySelector('.edit'),
   // close = document.querySelector('.close');
   
@@ -15,26 +15,16 @@ const main = () => {
 //   prepareDOMElements(); 
   prepareDOMEvents();
 };
-
-
-// const  prepareDOMElements = () => {
-//   const 
-// //     inputSearch = document.querySelector('.inputSearch'),
-// //     searchBTN = document.querySelector('.serachBtn'),
-// //     noTaskDiv = document.querySelector('.noTask'),
-// //     taskContainer = document.querySelector('.taskContainer'),
-// //     agree = document.querySelector('.agree'),
-// //     edit = document.querySelector('.edit'),
-// //     close = document.querySelector('.close');
-// // };
  
 const  prepareDOMEvents = () => {
-    
-  searchBTN.addEventListener('click',addNewTask);
   
+  searchBTN.addEventListener('click',addNewTask);
+
 };
 
-const addNewTask = () => {
+const addNewTask = (e) => {
+  e.preventDefault();
+  
   if(inputSearch.value != '') {
     let toDoListTask = document.createElement('div');
     toDoListTask.classList.add('toDoTaskBox');
@@ -44,7 +34,7 @@ const addNewTask = () => {
     toDoListTask.innerHTML =  
     `
     <div class="toDoTask">
-        <p>${inputSearch.value}</p>
+        <p class="toDoTaskP">${inputSearch.value}</p>
     </div>
     <div class="toDoAgree">
         <i class="agree fas fa-check"></i>
@@ -57,6 +47,18 @@ const addNewTask = () => {
   } else {
     noTaskDiv.innerHTML = 'Brak zadań na liście';
   }
+  taskContainer.addEventListener('click', (event) => {
+    event.preventDefault();
+    
+    const clicked = event.target;
+    if(clicked.classList.contains('agree')){
+      console.log('fsdfsdf');
+      
+      toDoTaskP.classList.add('line-through');
+      
+    }
+  });
 };
 
+  
 document.addEventListener('DOMContentLoaded', main);
