@@ -19,7 +19,7 @@
                 <h2>To Do List</h2>
                 <div class="toDoInput">
                     <input type="text" class="inputSearch" placeholder="Wpisz treść zadania...">
-                    <button type="submit" class="serachBtn">ADD</button>
+                    <button type="submit" class="searchBtn">ADD</button>
                 </div>
             </div>
             <div class="taskWrapper">
@@ -27,19 +27,22 @@
                 <div class="noTask">
                     <p></p>
                 </div>
-                <div class="taskContainer">
-                    <!--add task-->
-                    <div class="toDoTaskBox">
-                        <div class="toDoTask">
-                            <p class="toDoTaskP">dfsdfdsf</p>
+                <ul>
+                    <li data-id="test1">Wypic kawę
+                        <div class="tools">
+                            <button type="button" class="complete"><i class="fas fa-check"></i></button>
+                            <button type="button" class="edit">EDIT</button>
+                            <button type="button" class="close"><i class="fas fa-times"></i></button>
                         </div>
-                        <div class="toDoAgree">
-                            <i class="agree fas fa-check"></i>
-                            <a href="" class="edit"><p>EDIT</p></a>
-                            <i class=" close fas fa-times"></i>
-                        </div>  
-                    </div>
-                </div>
+                    </li>
+                    <li data-id="test1">Uprać
+                        <div class="tools">
+                            <button type="button" class="complete"><i class="fas fa-check"></i></button>
+                            <button type="button" class="edit">EDIT</button>
+                            <button type="button" class="close"><i class="fas fa-times"></i></button>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>

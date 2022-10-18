@@ -1,64 +1,67 @@
-
-const 
-  inputSearch = document.querySelector('.inputSearch'),
-  searchBTN = document.querySelector('.serachBtn'),
-  noTaskDiv = document.querySelector('.noTask'),
-  // toDoTask = document.querySelector('.toDoTask'),
-  taskContainer = document.querySelector('.taskContainer'),
-  toDoTaskP = document.querySelector('.toDoTaskP');
-  // edit = document.querySelector('.edit'),
-  // close = document.querySelector('.close');
-  
-  
+let inputSearch, searchBtn, noTask, ulList, tools;
   
 const main = () => {
-//   prepareDOMElements(); 
+  prepareDOMElements(); 
   prepareDOMEvents();
 };
  
+const prepareDOMElements = () => {
+  inputSearch =  document.querySelector('.inputSearch');
+  searchBtn =  document.querySelector('.searchBtn');
+  noTask =  document.querySelector('.noTask');
+  ulList = document.querySelector('.taskWrapper ul');
+  tools = document.querySelector('.tools');
+  
+};
+
 const  prepareDOMEvents = () => {
-  
-  searchBTN.addEventListener('click',addNewTask);
-
+  searchBtn.addEventListener('click', createTask);
+  ulList.addEventListener('click', checkClick);
 };
 
-const addNewTask = (e) => {
-  e.preventDefault();
-  
-  if(inputSearch.value != '') {
-    let toDoListTask = document.createElement('div');
-    toDoListTask.classList.add('toDoTaskBox');
-    
-    taskContainer.append(toDoListTask);
-    
-    toDoListTask.innerHTML =  
-    `
-    <div class="toDoTask">
-        <p class="toDoTaskP">${inputSearch.value}</p>
-    </div>
-    <div class="toDoAgree">
-        <i class="agree fas fa-check"></i>
-        <a href="" class="edit"><p>EDIT</p></a>
-        <i class=" close fas fa-times"></i>
-    </div>
-`;
+const createTask = () => {
+  if(inputSearch.value !== '') {
+    const newTask = document.createElement('li');
+    newTask.textContent = inputSearch.value;
+    createTools(newTask);
+    ulList.append(newTask);
     inputSearch.value = '';
-    
+    noTask.textContent = '';
   } else {
-    noTaskDiv.innerHTML = 'Brak zadań na liście';
+    noTask.textContent = 'Wpisz prawidłowy task';
   }
-  taskContainer.addEventListener('click', (event) => {
-    event.preventDefault();
-    
-    const clicked = event.target;
-    if(clicked.classList.contains('agree')){
-      console.log('fsdfsdf');
-      
-      toDoTaskP.classList.add('line-through');
-      
-    }
-  });
+};
+const createTools = (newTask) => {
+  tools = document.createElement('div');
+  tools.classList.add('tools');
+  
+  const completeBtn = document.createElement('button');
+  completeBtn.classList.add('complete');
+  completeBtn.innerHTML = '<i class="fas fa-check"></i>';
+  
+  const editBtn = document.createElement('button');
+  editBtn.classList.add('edit');
+  editBtn.textContent = 'EDIT';
+  
+  const closeBtn = document.createElement('button');
+  closeBtn.classList.add('close');
+  closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+  
+  tools.append(completeBtn, editBtn, closeBtn);
+  newTask.append(tools);
+  
+  
 };
 
-  
+const checkClick = e => {
+  console.log(e.target);
+  if(e.target.matches('.complete')) {
+    console.log('complete');
+  } else if (e.target.matches('.edit')) {
+    console.log('edit');
+  } else if (e.target.matches('.close')) {
+    console.log('close');
+  }
+};
+
 document.addEventListener('DOMContentLoaded', main);

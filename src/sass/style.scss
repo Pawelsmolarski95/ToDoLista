@@ -78,64 +78,58 @@
     margin-top: 20px;
   }
 
-  .taskContainer {
-    width: 90%;
-  }
-}      
-    
-.toDoTaskBox {
+ ul {
   display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 30px;
-  padding: 0px 10px;
-  height: 40px;
-  background-color: rgba(235, 235, 235, 0.698);
-  border-radius: 10px;
-}       
-
-.toDoTask {
-  width: 70%;
-}
-        
-.toDoAgree {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 5px;
-  height: 20px;
-                    
-  i:nth-child(1) {
-    color: rgb(6, 84, 172);
-    margin-right: 8px;
-    cursor: pointer;
-                    
-  }
-
-  i:nth-child(3) {
-    color: rgb(213, 13, 13);
-    margin-right: 8px;
-    cursor: pointer;
-                    
-  }
-
-  a {
-    margin-right: 8px;
-    text-decoration: none;
-    cursor: pointer;
-  }         
-
-  p {
-    color: green;
-    font-weight: 800;
-                        
-  }
-        
-                    
-}
-            
+  flex-direction: column;
+  gap: 15px;
+  width: 90%;
+  text-decoration: none;
   
+ }
+ 
+ li {
+  list-style: none;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(232, 231, 231, 0.734);
+  border-radius: 10px;
+  padding: 7px;
+ }
+} 
+.tools {
+  font-size: 0;
+}     
+
+.tools button {
+    border: inherit;
+    background-color: transparent;
+    cursor: pointer;
+    height: 100%;
+    border-radius: 10px;
+    margin-right: 5px;
+}
+
+.tools button:hover {
+  transition: 0.3s;
+  background-color: rgba(171, 165, 165, 0.307);
+}
+
+ .complete {
+  color: rgb(16, 112, 238)  
+ }
+ 
+ .edit {
+  color: green;
+  font-weight: bold;
+ }
+ 
+ .close {
+  color: tomato;
+ }
+ 
+ 
+
 
 .editTask {
   display: none;
@@ -186,6 +180,7 @@
     }
   }
 }
+
 #line-through {
   text-decoration: line-through;
 }
